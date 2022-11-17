@@ -4,7 +4,6 @@ let agregarGasto = (gasto, cb)=>{
     fs.appendFile("gastos.txt",gasto,function (err) {
         if (err) throw err;
         console.log('Guardado!');
-        console.clear()
         cb()
 })}
 
