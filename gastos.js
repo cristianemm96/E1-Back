@@ -1,19 +1,8 @@
-const fs = require("fs");
 const prompts = require('prompts');
 const opciones = require('./opcionesGastos')
 
-let cargar = ()=>
-fs.readFile('gastos.txt', "utf-8",(err)=>{
-    if(err){
-        fs.writeFile('gastos.txt', 'Mis gastos:\n', err=>{
-            if(err) throw err
-        })       
-    }
-})
-
-
 const procesarEntrada = (opcion)=>{
-    cargar()
+    opciones.cargar()
     console.clear()
     switch (opcion) {
         case 1:
@@ -41,7 +30,7 @@ const menu = ()=>(async () => {
     const response = await prompts({
       type: 'number',
       name: 'value',
-      message: 'Presione 1 para ingresar gastos. Presione 2 para visualizar gastos. Presione 3 para eliminar los gastos',
+      message: 'Presione 1 para ingresar gastos. Presione 2 para visualizar gastos.',
     });
     console.clear()
     procesarEntrada(response.value);
